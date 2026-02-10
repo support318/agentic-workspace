@@ -39,10 +39,6 @@ jobs:
               git remote add origin https://github.com/support318/agentic-workspace.git
             fi
 
-            # Configure git to use the deploy token
-            # We'll use the public repo access for now (make repo public)
-            # Or add GH_TOKEN as a secret for private repo access
-
             # Pull latest changes
             echo "Pulling latest code from GitHub..."
             git fetch origin
@@ -55,17 +51,7 @@ jobs:
             echo "Installing dependencies..."
             pip3 install -r requirements.txt --user 2>&1 | tail -3
 
-            # Restart systemd services
-            echo "Restarting services..."
-            systemctl restart agentic-webhooks || echo "agentic-webhooks service restart failed"
-            systemctl restart email-processor || echo "email-processor service restart failed"
-
-            # Wait for services to start
-            sleep 2
-
-            # Check service status
-            echo "=== Service Status ==="
-            systemctl is-active agentic-webhooks && echo "agentic-webhooks: RUNNING" || echo "agentic-webhooks: FAILED"
-            systemctl is-active email-processor && echo "email-processor: RUNNING" || echo "email-processor: FAILED"
-
             echo "=== Deployment completed at $(date) ==="
+            echo ""
+            echo "NOTE: Services need to be restarted manually with:"
+            echo "  ssh candid@192.168.40.100 'sudo systemctl restart agentic-webhooks email-processor'"
