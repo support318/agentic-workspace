@@ -1,0 +1,17 @@
+[Unit]
+Description=GitHub Webhook Deploy Listener
+After=network.target
+
+[Service]
+Type=simple
+User=candid
+Group=candid
+WorkingDirectory=/home/candid/webhooks
+Environment="PATH=/home/candid/.local/bin:/usr/bin:/bin"
+Environment="WEBHOOK_SECRET=your-webhook-secret-here"
+ExecStart=/usr/bin/python3 /home/candid/webhooks/execution/webhook_deploy.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
