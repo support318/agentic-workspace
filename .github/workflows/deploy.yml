@@ -51,11 +51,15 @@ jobs:
 
             # Check if git is initialized on server
             if [ ! -d ".git" ]; then
-              echo "Git not initialized on server, cloning..."
+              echo "Git not initialized on server, cloning into temp directory..."
               cd /home/candid
-              rm -rf webhooks
-              git clone https://github.com/support318/agentic-workspace.git webhooks
+              rm -rf webhooks_temp
+              git clone https://github.com/support318/agentic-workspace.git webhooks_temp
+              echo "Copying .git to existing directory..."
+              mv webhooks_temp/.git webhooks/
+              rm -rf webhooks_temp
               cd webhooks
+              git reset --hard origin/main
             else
               echo "Pulling latest changes..."
               git fetch origin
