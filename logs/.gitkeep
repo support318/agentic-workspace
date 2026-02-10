@@ -1,0 +1,11 @@
+# Log files directory
+# This directory stores application logs
+
+# Files created here will be:
+# - webhook_access.log - Webhook access logs
+# - webhook_error.log - Error logs
+# - ghl_api.log - GHL API call logs
+# - calendar_api.log - Calendar API call logs
+
+# Note: Logs are also stored in journald when running as a service
+# View with: journalctl -u agentic-webhooks -f

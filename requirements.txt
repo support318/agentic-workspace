@@ -1,0 +1,44 @@
+# DO Framework - Python Dependencies
+
+# Email (smtplib is built-in)
+
+# Web scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
+
+# Data handling
+pandas>=2.0.0
+
+# Google Sheets (optional)
+gspread>=5.10.0
+google-auth>=2.23.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Rate limiting
+ratelimit>=2.2.1
+
+# Date handling
+python-dateutil>=2.8.2
+
+# CLI utilities
+click>=8.1.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# For Apify integration (if using their SDK)
+apify>=2.0.0
+
+# Flask webhook server
+flask>=2.3.0
+
+# Google Calendar API
+google-api-python-client>=2.100.0
+google-auth-oauthlib>=1.0.0
+
+# Keycloak integration (optional)
+python-keycloak>=3.0.0

@@ -1,0 +1,23 @@
+[Unit]
+Description=Agentic Webhook Server
+Documentation=https://github.com/candidstudios/agentic-workspace
+After=network.target
+
+[Service]
+Type=simple
+User=candid
+Group=candid
+WorkingDirectory=/home/candid/webhooks
+Environment="PATH=/home/candid/webhooks/venv/bin:/usr/bin"
+ExecStart=/home/candid/webhooks/venv/bin/python webhook_server.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

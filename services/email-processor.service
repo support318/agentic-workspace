@@ -1,0 +1,27 @@
+[Unit]
+Description=Email Processor Daemon - Wedding Vendor Leads
+Documentation=https://github.com/candidstudios/agentic-workspace
+After=network.target agentic-webhooks.service
+
+[Service]
+Type=simple
+User=candid
+Group=candid
+WorkingDirectory=/home/candid/webhooks
+Environment="PATH=/home/candid/webhooks/venv/bin:/usr/bin"
+ExecStart=/home/candid/webhooks/venv/bin/python execution/email_processor.py
+Restart=always
+RestartSec=30
+StandardOutput=journal
+StandardError=journal
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Process management
+KillMode=process
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target
